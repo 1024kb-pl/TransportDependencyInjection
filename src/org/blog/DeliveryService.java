@@ -2,6 +2,7 @@ package org.blog;
 
 import org.blog.transport.AirplaneTransport;
 import org.blog.transport.ShipTransport;
+import org.blog.transport.TransportTypes;
 import org.blog.transport.TruckTransport;
 
 public class DeliveryService {
@@ -9,17 +10,17 @@ public class DeliveryService {
     private final ShipTransport shipTransport = new ShipTransport();
     private final TruckTransport truckTransport = new TruckTransport();
 
-    public void sendPackage(DeliveryPackage deliveryPackage, String transportType) {
+    public void sendPackage(DeliveryPackage deliveryPackage, TransportTypes transportType) {
         switch (transportType) {
-            case "airplane":
+            case AIRPLANE:
                 airplaneTransport.delivery(deliveryPackage);
                 break;
 
-            case "ship":
+            case SHIP:
                 shipTransport.delivery(deliveryPackage);
                 break;
 
-            case "truck":
+            case TRUCK:
                 truckTransport.delivery(deliveryPackage);
                 break;
 

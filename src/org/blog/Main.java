@@ -1,6 +1,6 @@
 package org.blog;
 
-import org.blog.transport.AirplaneTransport;
+import org.blog.transport.TransportTypes;
 
 public class Main {
 
@@ -8,9 +8,8 @@ public class Main {
         DeliveryPackage deliveryPackage = new DeliveryPackage("Książka", "Effective Java");
 
         DeliveryService deliveryService = new DeliveryService();
-        deliveryService.sendPackage(deliveryPackage, "airplane");
-        deliveryService.sendPackage(deliveryPackage, "ship");
-        deliveryService.sendPackage(deliveryPackage, "truck");
-        deliveryService.sendPackage(deliveryPackage, "unknown");
+        deliveryService.sendPackage(deliveryPackage, TransportTypes.AIRPLANE);
+        deliveryService.sendPackage(deliveryPackage, TransportTypes.SHIP);
+        deliveryService.sendPackage(deliveryPackage, TransportTypes.TRUCK);
     }
 }
