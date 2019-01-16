@@ -1,15 +1,30 @@
 package org.blog;
 
-import org.blog.transport.TransportService;
+import org.blog.transport.AirplaneTransport;
+import org.blog.transport.ShipTransport;
+import org.blog.transport.TruckTransport;
 
 public class DeliveryService {
-    private final TransportService transportService;
+    private final AirplaneTransport airplaneTransport = new AirplaneTransport();
+    private final ShipTransport shipTransport = new ShipTransport();
+    private final TruckTransport truckTransport = new TruckTransport();
 
-    public DeliveryService(TransportService transportService) {
-        this.transportService = transportService;
-    }
+    public void sendPackage(DeliveryPackage deliveryPackage, String transportType) {
+        switch (transportType) {
+            case "airplane":
+                airplaneTransport.delivery(deliveryPackage);
+                break;
 
-    public void sendPackage(DeliveryPackage deliveryPackage) {
-        transportService.delivery(deliveryPackage);
+            case "ship":
+                shipTransport.delivery(deliveryPackage);
+                break;
+
+            case "truck":
+                truckTransport.delivery(deliveryPackage);
+                break;
+
+            default:
+                System.out.println("Unrecognized transport type!");
+        }
     }
 }
